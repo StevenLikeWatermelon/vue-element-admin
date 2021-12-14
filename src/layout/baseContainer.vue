@@ -1,6 +1,6 @@
 <template>
   <layoutWrap>
-    <AppMain />
+    <AppMain :is-not-qiankun="false" />
   </layoutWrap>
 </template>
 
