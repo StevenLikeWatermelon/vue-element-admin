@@ -12,8 +12,6 @@
 </template>
 
 <script>
-import { asyncRoutes } from '@/router/index.js'
-import { registerMicroApps, start } from 'qiankun'
 export default {
   name: 'AppMain',
   props: {
@@ -28,34 +26,6 @@ export default {
     },
     key() {
       return this.$route.path
-    }
-  },
-  mounted() {
-    // 是qiankun页面且没有注册过
-    console.log(window.__POWERED_BY_QIANKUN__)
-    if (!this.isNotQiankun && !window.__POWERED_BY_QIANKUN__) {
-      console.log('should init qiankun')
-      this.initQiankun()
-    }
-  },
-  methods: {
-    initQiankun() {
-      const qianKunRouter = []
-      for (let index = 0; index < asyncRoutes.length; index++) {
-        const element = asyncRoutes[index]
-        if (element.isQianKunRouter) {
-          qianKunRouter.push({
-            activeRule: element.path,
-            entry: element.entry,
-            container: element.container,
-            name: element.name
-          })
-        }
-      }
-      console.log(qianKunRouter)
-      registerMicroApps(qianKunRouter)
-
-      start()
     }
   }
 }

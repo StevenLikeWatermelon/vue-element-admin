@@ -13,7 +13,7 @@ const name = defaultSettings.title || 'vue Element Admin' // page title
 // For example, Mac: sudo npm run
 // You can change the port by the following method:
 // port = 9527 npm run dev OR npm run dev --port = 9527
-const port = process.env.port || process.env.npm_config_port || 9527 // dev port
+const port = process.env.port || process.env.npm_config_port || 9090 // dev port
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
@@ -32,6 +32,25 @@ module.exports = {
   devServer: {
     port: port,
     open: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:9527/',
+        // target: 'https://scrm-test2.ti-scrm.com/',
+        // target: ' https://scrm-test5.ti-scrm.com',ss
+        // target: 'http://172.16.43.199:8083/', // 卫峰
+        // target: 'http://172.16.43.58:8083/', // 王帅
+        // target: 'http://172.16.40.152:8083/', // 周涛
+        // target: 'http://172.16.43.173:8083/', // 杨从瑞
+        // target: 'http://172.16.41.103:8083/', // 程兆祥
+        // target: 'http://172.16.43.173:8083/', // 杨从瑞
+        timeout: 1800000,
+        ws: true,
+        changeOrigin: true // 是否允许跨域
+        // pathRewrite: {
+        //   '^/api': ''
+        // }
+      }
+    },
     overlay: {
       warnings: false,
       errors: true

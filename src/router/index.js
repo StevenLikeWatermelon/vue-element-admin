@@ -15,7 +15,7 @@ import baseContainer from '@/layout/baseContainer.vue'
  * alwaysShow: true               if set true, will always show the root menu
  *                                if not set alwaysShow, when item has more than one children route,
  *                                it will becomes nested mode, otherwise not show the root menu
- * isQianKunRouter: true          true: it will render by qiankun, false: it will render by vue-router
+ * qiankunConfig: truly           truly: it will render by qiankun, falsy: it will render by vue-router
  * redirect: noRedirect           if set noRedirect will no redirect in the breadcrumb
  * name:'router-name'             the name is used by <keep-alive> (must set!!!)
  * meta : {
@@ -83,13 +83,68 @@ export const constantRoutes = [
  */
 export const asyncRoutes = [
   {
-    path: '/weiteng-app',
-    name: 'weitengApp',
-    entry: 'https://www.baidu.com/',
-    container: '#subAppContainer',
-    isQianKunRouter: true,
+    path: '/chat_archive',
+    name: 'weiteng-app-chat-archive',
     meta: {
       title: '会话存档',
+      icon: 'guide'
+    },
+    alwaysShow: true,
+    component: baseContainer,
+    children: [
+      {
+        path: '/chat_archive/client_Retrieve',
+        name: 'weiteng-app-chat-client-archive',
+        qiankunConfig: {
+          entry: 'http://localhost:9527/#/chat_archive/client_Retrieve',
+          container: '#subAppContainer'
+        },
+        meta: {
+          title: '按客户检索',
+          icon: 'guide',
+          roles: ['admin', 'editor']
+        }
+      },
+      {
+        path: '/chat_archive/employees_Retrieve',
+        name: 'weiteng-app-chat-employees-archive',
+        qiankunConfig: {
+          entry: 'http://localhost:9527/#/chat_archive/employees_Retrieve',
+          container: '#subAppContainer'
+        },
+        meta: {
+          title: '按员工检索',
+          icon: 'guide',
+          roles: ['admin', 'editor']
+        }
+      },
+      {
+        path: '/chat_archive/white_List',
+        name: 'weiteng-app-chat-white-list',
+        qiankunConfig: {
+          entry: 'http://localhost:9527/#/chat_archive/white_List',
+          container: '#subAppContainer'
+        },
+        meta: {
+          title: '会话白名单检索',
+          icon: 'guide',
+          roles: ['admin', 'editor']
+        }
+      }
+    ]
+  },
+
+  {
+    path: '/enterpriseMicroAssistant/welcome_msg',
+    name: 'weiteng-app-enterprise-microAssistant-welcome-msg',
+    entry: 'http://localhost:9527/#enterpriseMicroAssistant/welcome_msg',
+    container: '#subAppContainer',
+    qiankunConfig: {
+      entry: 'http://localhost:9527/#/chat_archive/white_List',
+      container: '#subAppContainer'
+    },
+    meta: {
+      title: '欢迎语',
       icon: 'guide',
       roles: ['admin', 'editor']
     },
