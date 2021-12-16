@@ -78,7 +78,7 @@ export const constantRoutes = [
 /**
  * 带有权限判断的路由（包含基座自带路由和qiankun路由） 和404路由
  */
-const weitengHost = 'https://scrm-test.ti-scrm.com'
+const weitengHost = 'https://scrm-test0.ti-scrm.com'
 export const asyncRoutes = [
   {
     path: '/chat_archive',

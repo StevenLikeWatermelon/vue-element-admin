@@ -22,7 +22,7 @@ export default {
         const element = routes[index]
         if (element.qiankunConfig) {
           qiankunSubsArr.push({
-            activeRule: `/#${element.path}`,
+            activeRule: `${element.path}`,
             entry: element.qiankunConfig.entry,
             container: element.qiankunConfig.container,
             name: element.name
