@@ -7,23 +7,17 @@
         <tags-view v-if="needTagsView" />
       </div>
       <slot />
-      <right-panel v-if="showSettings">
-        <settings />
-      </right-panel>
     </div>
   </div>
 </template>
 
 <script>
-import RightPanel from '@/components/RightPanel'
-import { Navbar, Settings, Sidebar, TagsView } from '../index.js'
+import { Navbar, Sidebar, TagsView } from '../index.js'
 import { mapState } from 'vuex'
 
 export default {
   components: {
     Navbar,
-    RightPanel,
-    Settings,
     Sidebar,
     TagsView
   },

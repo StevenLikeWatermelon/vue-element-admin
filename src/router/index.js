@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-/* Layout */
+/* Layout 是自带路由页面  baseContainer是qiankun路由面  */
 import Layout from '@/layout'
 import baseContainer from '@/layout/baseContainer.vue'
 
@@ -30,9 +30,7 @@ import baseContainer from '@/layout/baseContainer.vue'
  */
 
 /**
- * constantRoutes
- * a base page that does not have permission requirements
- * all roles can be accessed
+ * 基座应用 固有路由
  */
 export const constantRoutes = [
   // 刷新和重定向
@@ -78,9 +76,9 @@ export const constantRoutes = [
 ]
 
 /**
- * asyncRoutes
- * the routes that need to be dynamically loaded based on user roles
+ * 带有权限判断的路由（包含基座自带路由和qiankun路由） 和404路由
  */
+const weitengHost = 'https://scrm-test.ti-scrm.com'
 export const asyncRoutes = [
   {
     path: '/chat_archive',
@@ -96,7 +94,7 @@ export const asyncRoutes = [
         path: '/chat_archive/client_Retrieve',
         name: 'weiteng-app-chat-client-archive',
         qiankunConfig: {
-          entry: 'http://localhost:9527/#/chat_archive/client_Retrieve',
+          entry: `${weitengHost}/#/chat_archive/client_Retrieve`,
           container: '#subAppContainer'
         },
         meta: {
@@ -109,7 +107,7 @@ export const asyncRoutes = [
         path: '/chat_archive/employees_Retrieve',
         name: 'weiteng-app-chat-employees-archive',
         qiankunConfig: {
-          entry: 'http://localhost:9527/#/chat_archive/employees_Retrieve',
+          entry: `${weitengHost}/#/chat_archive/employees_Retrieve`,
           container: '#subAppContainer'
         },
         meta: {
@@ -122,7 +120,7 @@ export const asyncRoutes = [
         path: '/chat_archive/white_List',
         name: 'weiteng-app-chat-white-list',
         qiankunConfig: {
-          entry: 'http://localhost:9527/#/chat_archive/white_List',
+          entry: `${weitengHost}/#/chat_archive/white_List`,
           container: '#subAppContainer'
         },
         meta: {
@@ -137,10 +135,9 @@ export const asyncRoutes = [
   {
     path: '/enterpriseMicroAssistant/welcome_msg',
     name: 'weiteng-app-enterprise-microAssistant-welcome-msg',
-    entry: 'http://localhost:9527/#enterpriseMicroAssistant/welcome_msg',
     container: '#subAppContainer',
     qiankunConfig: {
-      entry: 'http://localhost:9527/#/chat_archive/white_List',
+      entry: `${weitengHost}/#enterpriseMicroAssistant/welcome_msg`,
       container: '#subAppContainer'
     },
     meta: {
@@ -150,6 +147,21 @@ export const asyncRoutes = [
     },
     component: baseContainer
   },
+  // {
+  //   path: '/dongfeng-nissan/index/home',
+  //   name: 'aicc-dongfeng-nissan',
+  //   container: '#subAppContainer',
+  //   qiankunConfig: {
+  //     entry: 'https://extend-bj-test1.clink.cn/dongfeng-nissan/index/home',
+  //     container: '#subAppContainer'
+  //   },
+  //   meta: {
+  //     title: '东风',
+  //     icon: 'guide',
+  //     roles: ['admin', 'editor']
+  //   },
+  //   component: baseContainer
+  // },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
