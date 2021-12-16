@@ -1,25 +1,14 @@
 <template>
   <div class="dashboard-editor-container">
-    <div class=" clearfix">
-      <pan-thumb :image="avatar" style="float: left">
-        Your roles:
-        <span v-for="item in roles" :key="item" class="pan-info-roles">{{ item }}</span>
-      </pan-thumb>
-      <div class="info-container">
-        <span class="display_name">{{ name }}</span>
-        <span style="font-size:20px;padding-top:20px;display:inline-block;">角色2的首页</span>
-      </div>
-    </div>
+    <div>editor首页</div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import PanThumb from '@/components/PanThumb'
 
 export default {
   name: 'DashboardEditor',
-  components: { PanThumb },
   data() {
     return {
     }
