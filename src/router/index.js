@@ -137,21 +137,21 @@ export const asyncRoutes = [
     },
     component: baseContainer
   },
-  // {
-  //   path: '/dongfeng-nissan/index/home',
-  //   name: 'aicc-dongfeng-nissan',
-  //   container: '#subAppContainer',
-  //   qiankunConfig: {
-  //     entry: 'https://extend-bj-test1.clink.cn/dongfeng-nissan/index/home',
-  //     container: '#subAppContainer'
-  //   },
-  //   meta: {
-  //     title: '东风',
-  //     icon: 'guide',
-  //     roles: ['admin', 'editor']
-  //   },
-  //   component: baseContainer
-  // },
+  {
+    path: '/dongfeng-nissan/index/home',
+    name: 'aicc-dongfeng-nissan',
+    container: '#subAppContainer',
+    qiankunConfig: {
+      entry: 'https://extend-bj-test1.clink.cn',
+      container: '#subAppContainer'
+    },
+    meta: {
+      title: '东风',
+      icon: 'guide',
+      roles: ['admin', 'editor']
+    },
+    component: baseContainer
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
